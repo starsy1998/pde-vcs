@@ -1,0 +1,37 @@
+<!-- Plugin Configuration File. Read more: https://plugins.jetbrains.com/docs/intellij/plugin-configuration-file.html -->
+<idea-plugin>
+    <id>com.haiwen.pdevcs</id>
+    <name>PDE-VCS Exporter</name>
+    <vendor>haiwen yang</vendor>
+
+    <depends>com.intellij.modules.platform</depends>
+    <depends>com.intellij.modules.java</depends>
+    <depends>com.intellij.modules.vcs</depends>
+
+    <resource-bundle>messages.MyBundle</resource-bundle>
+
+    <extensions defaultExtensionNs="com.intellij">
+        <notificationGroup id="Export Class Files" displayType="BALLOON" />
+    </extensions>
+
+    <actions>
+        <action
+                id="com.haiwen.pdevcs.ExportClassFromSvnChangeAction"
+                class="org.jetbrains.plugins.template.actions.ExportClassFromSvnChangeAction"
+                text="Export Class Files"
+                description="Export compiled class files and web resources for selected changes">
+            <add-to-group group-id="ChangesViewPopupMenu" anchor="last"/>
+            <add-to-group group-id="ProjectViewPopupMenu" anchor="last"/>
+        </action>
+    </actions>
+
+    <description><![CDATA[
+        PDE-VCS Exporter helps teams export deliverable files from local VCS changes directly inside IntelliJ IDEA.
+        <br/>
+        <br/>
+        It exports Java sources as compiled class files, exports web resources using a web-package-style directory structure, and creates a timestamped export root directory for each operation.
+        <br/>
+        <br/>
+        The plugin is designed for SVN-oriented workflows where changed files need to be packaged quickly for deployment or handoff.
+    ]]></description>
+</idea-plugin>
